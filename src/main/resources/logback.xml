@@ -11,7 +11,6 @@
     </appender>
 
     <appender name="dmall" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--<File>d:/dmalllog/dmall.log</File>-->
         <File>/developer/apache-tomcat-7.0.73-dmall/logs/dmall.log</File>
         <!--<File>/Users/liuhuan/apache-tomcat-7.0.79/logs/dmall.log</File>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
