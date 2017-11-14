@@ -35,6 +35,16 @@ public class ProductDetailVo {
 
     private Integer parentCategoryId;
 
+    private Integer grandParentCategoryId;
+
+    private Integer goodProduct;
+
+    private Integer newProduct;
+
+    private Integer hotSale;
+
+    private BigDecimal discount;
+
     public Integer getId() {
         return id;
     }
@@ -138,4 +148,44 @@ public class ProductDetailVo {
     public Integer getParentCategoryId() { return parentCategoryId; }
 
     public void setParentCategoryId(Integer parentCategoryId) { this.parentCategoryId = parentCategoryId; }
+
+    public Integer getGrandParentCategoryId() {
+        return grandParentCategoryId;
+    }
+
+    public void setGrandParentCategoryId(Integer grandParentCategoryId) {
+        this.grandParentCategoryId = grandParentCategoryId;
+    }
+
+    public Integer getGoodProduct() {
+        return goodProduct;
+    }
+
+    public void setGoodProduct(Integer goodProduct) {
+        this.goodProduct = goodProduct;
+    }
+
+    public Integer getNewProduct() {
+        return newProduct;
+    }
+
+    public void setNewProduct(Integer newProduct) {
+        this.newProduct = newProduct;
+    }
+
+    public Integer getHotSale() {
+        return hotSale;
+    }
+
+    public void setHotSale(Integer hotSale) {
+        this.hotSale = hotSale;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
 }

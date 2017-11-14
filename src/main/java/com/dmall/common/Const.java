@@ -18,6 +18,11 @@ public class Const {
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
     }
 
+    public interface Whether{
+        int YES = 1;//是
+        int NO = 0;//否
+    }
+
     public interface Cart{
         int CHECKED = 1;//即购物车选中状态
         int UN_CHECKED = 0;//购物车中未选中状态
@@ -32,7 +37,7 @@ public class Const {
     }
 
     public enum OrderStatusEnum{
-        CANCELD(0,"已取消"),
+        CANCELED(0,"已取消"),
         NO_PAY(10,"未支付"),
         PAID(20,"已付款"),
         SHIPPED(40,"已发货"),

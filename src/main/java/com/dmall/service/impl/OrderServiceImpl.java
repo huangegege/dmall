@@ -122,7 +122,7 @@ public class OrderServiceImpl implements IOrderService {
         }
         Order updateOrder = new Order();
         updateOrder.setId(order.getId());
-        updateOrder.setStatus(Const.OrderStatusEnum.CANCELD.getCode());
+        updateOrder.setStatus(Const.OrderStatusEnum.CANCELED.getCode());
 
         int row = orderMapper.updateByPrimaryKeySelective(updateOrder);
         if (row > 0){

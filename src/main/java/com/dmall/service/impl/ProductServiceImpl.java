@@ -106,9 +106,21 @@ public class ProductServiceImpl implements IProductService {
         Category category = categoryMapper.selectByPrimaryKey(product.getCategoryId());
         if (category == null){
             productDetailVo.setParentCategoryId(0);//默认根结点
+            productDetailVo.setGrandParentCategoryId(0);
         }else{
             productDetailVo.setParentCategoryId(category.getParentId());
+            Category parentCategory = categoryMapper.selectByPrimaryKey(category.getParentId());
+            if (parentCategory == null) {
+                productDetailVo.setGrandParentCategoryId(0);
+            } else {
+                productDetailVo.setGrandParentCategoryId(parentCategory.getParentId());
+            }
         }
+
+        productDetailVo.setGoodProduct(product.getGoodProduct());
+        productDetailVo.setNewProduct(product.getNewProduct());
+        productDetailVo.setHotSale(product.getHotSale());
+        productDetailVo.setDiscount(product.getDiscount());
 
         productDetailVo.setCreateTime(DateTimeUtil.dateToStr(product.getCreateTime()));
         productDetailVo.setUpdateTime(DateTimeUtil.dateToStr(product.getUpdateTime()));

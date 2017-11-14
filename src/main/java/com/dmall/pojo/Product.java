@@ -24,11 +24,19 @@ public class Product {
 
     private Integer status;
 
+    private Integer goodProduct;
+
+    private Integer newProduct;
+
+    private Integer hotSale;
+
+    private BigDecimal discount;
+
     private Date createTime;
 
     private Date updateTime;
 
-    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
+    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Integer goodProduct, Integer newProduct, Integer hotSale, BigDecimal discount, Date createTime, Date updateTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -39,6 +47,10 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.status = status;
+        this.goodProduct = goodProduct;
+        this.newProduct = newProduct;
+        this.hotSale = hotSale;
+        this.discount = discount;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -125,6 +137,38 @@ public class Product {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getGoodProduct() {
+        return goodProduct;
+    }
+
+    public void setGoodProduct(Integer goodProduct) {
+        this.goodProduct = goodProduct;
+    }
+
+    public Integer getNewProduct() {
+        return newProduct;
+    }
+
+    public void setNewProduct(Integer newProduct) {
+        this.newProduct = newProduct;
+    }
+
+    public Integer getHotSale() {
+        return hotSale;
+    }
+
+    public void setHotSale(Integer hotSale) {
+        this.hotSale = hotSale;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
     }
 
     public Date getCreateTime() {
