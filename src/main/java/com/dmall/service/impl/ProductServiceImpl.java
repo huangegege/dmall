@@ -185,7 +185,7 @@ public class ProductServiceImpl implements IProductService {
         return ServerResponse.createBySuccess(productDetailVo);
     }
 
-    public ServerResponse<PageInfo> getProductByKeywordCategory(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy){
+    public ServerResponse<PageInfo> getProductByFields(String keyword, Integer categoryId, Integer property, Integer discountLevel, int pageNum, int pageSize, String orderBy){
         if (StringUtils.isBlank(keyword) && categoryId == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
@@ -214,7 +214,8 @@ public class ProductServiceImpl implements IProductService {
                 PageHelper.orderBy(orderByArray[0]+" "+orderByArray[1]);
             }
         }
-        List<Product> productList = productMapper.selectByNameAndCategoryIds(StringUtils.isBlank(keyword)?null:keyword,categoryIdList.size()==0?null:categoryIdList);
+        List<Product> productList = productMapper.selectByFields(StringUtils.isBlank(keyword)?null:keyword,categoryIdList.size()==0?null:categoryIdList,
+                property, discountLevel);
 
         List<ProductListVo> productListVoList = Lists.newArrayList();
         for (Product product : productList){

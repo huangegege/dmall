@@ -244,7 +244,7 @@
     </where>
   </select>
 
-  <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
+  <select id="selectByFields" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List"/>
     from dmall_product
@@ -258,5 +258,33 @@
         #{item}
       </foreach>
     </if>
+    <choose>
+      <when test="property == 1">
+        and good_product = 1
+      </when>
+      <when test="property == 2">
+        and new_product = 1
+      </when>
+      <when test="property == 3">
+        and hot_sale = 1
+      </when>
+    </choose>
+    <choose>
+      <when test="discountLevel == 100">
+        and discount <![CDATA[>]]> 0
+        and discount <![CDATA[<]]> 0.4
+      </when>
+      <when test="discountLevel == 200">
+        and discount <![CDATA[>=]]> 0.4
+        and discount <![CDATA[<]]> 0.7
+      </when>
+      <when test="discountLevel == 300">
+        and discount <![CDATA[>=]]> 0.7
+      </when>
+      <when test="discountLevel >= 0">
+        and discount <![CDATA[>=]]> #{discountLevel}
+        and discount <![CDATA[<]]> #{discountLevel} + 1
+      </when>
+    </choose>
   </select>
 </mapper>
