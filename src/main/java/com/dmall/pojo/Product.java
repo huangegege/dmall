@@ -32,6 +32,8 @@ public class Product {
 
     private BigDecimal discount;
 
+    private String type;
+
     private Date createTime;
 
     private Date updateTime;
@@ -169,6 +171,14 @@ public class Product {
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getCreateTime() {

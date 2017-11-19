@@ -45,6 +45,8 @@ public class ProductDetailVo {
 
     private BigDecimal discount;
 
+    private String type;
+
     public Integer getId() {
         return id;
     }
@@ -187,5 +189,13 @@ public class ProductDetailVo {
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

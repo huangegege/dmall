@@ -269,6 +269,9 @@
         and hot_sale = 1
       </when>
     </choose>
+    <if test="type != null">
+      and type = #{type}
+    </if>
     <choose>
       <when test="discountLevel == 100">
         and discount <![CDATA[>]]> 0

@@ -121,6 +121,7 @@ public class ProductServiceImpl implements IProductService {
         productDetailVo.setNewProduct(product.getNewProduct());
         productDetailVo.setHotSale(product.getHotSale());
         productDetailVo.setDiscount(product.getDiscount());
+        productDetailVo.setType(product.getType());
 
         productDetailVo.setCreateTime(DateTimeUtil.dateToStr(product.getCreateTime()));
         productDetailVo.setUpdateTime(DateTimeUtil.dateToStr(product.getUpdateTime()));
@@ -185,7 +186,7 @@ public class ProductServiceImpl implements IProductService {
         return ServerResponse.createBySuccess(productDetailVo);
     }
 
-    public ServerResponse<PageInfo> getProductByFields(String keyword, Integer categoryId, Integer property, Integer discountLevel, int pageNum, int pageSize, String orderBy){
+    public ServerResponse<PageInfo> getProductByFields(String keyword, Integer categoryId, Integer property, String type, Integer discountLevel, int pageNum, int pageSize, String orderBy){
         if (StringUtils.isBlank(keyword) && categoryId == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
@@ -215,7 +216,7 @@ public class ProductServiceImpl implements IProductService {
             }
         }
         List<Product> productList = productMapper.selectByFields(StringUtils.isBlank(keyword)?null:keyword,categoryIdList.size()==0?null:categoryIdList,
-                property, discountLevel);
+                property, StringUtils.isBlank(type)?null:type, discountLevel);
 
         List<ProductListVo> productListVoList = Lists.newArrayList();
         for (Product product : productList){
