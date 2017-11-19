@@ -17,7 +17,7 @@
       <arg column="new_product" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="hot_sale" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="discount" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
-      <arg column="type" jdbcType="VARCHAR" javaType="java.math.String" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
