@@ -17,13 +17,14 @@
       <arg column="new_product" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="hot_sale" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="discount" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.math.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
     id, category_id, name, subtitle, main_image, sub_images, detail, price, stock, status, 
-    good_product, new_product, hot_sale, discount, create_time, update_time
+    good_product, new_product, hot_sale, discount, type, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -40,13 +41,13 @@
       subtitle, main_image, sub_images, 
       detail, price, stock, 
       status, good_product, new_product,
-      hot_sale, discount, create_time, update_time
+      hot_sale, discount, type, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR}, #{subImages,jdbcType=VARCHAR}, 
       #{detail,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{goodProduct,jdbcType=INTEGER}, #{newProduct,jdbcType=INTEGER},
-       #{hotSale,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, now(), now()
+       #{hotSale,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dmall.pojo.Product" >
@@ -93,6 +94,9 @@
       </if>
       <if test="discount != null" >
         discount,
+      </if>
+      <if test="type != null" >
+        type,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -144,6 +148,9 @@
       <if test="discount != null" >
         #{discount,jdbcType=DECIMAL},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         now(),
       </if>
@@ -194,6 +201,9 @@
       <if test="discount != null" >
         discount = #{discount,jdbcType=DECIMAL},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -218,6 +228,7 @@
       new_product = #{newProduct,jdbcType=INTEGER},
       hot_sale = #{hotSale,jdbcType=INTEGER},
       discount = #{discount,jdbcType=DECIMAL},
+      type = #{type,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
