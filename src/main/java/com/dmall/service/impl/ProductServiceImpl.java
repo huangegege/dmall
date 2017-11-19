@@ -187,7 +187,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     public ServerResponse<PageInfo> getProductByFields(String keyword, Integer categoryId, Integer property, String type, Integer discountLevel, int pageNum, int pageSize, String orderBy){
-        if (StringUtils.isBlank(keyword) && categoryId == null){
+        if (StringUtils.isBlank(keyword) && categoryId == null && property == null && StringUtils.isBlank(type)){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
         List<Integer> categoryIdList = new ArrayList<Integer>();
