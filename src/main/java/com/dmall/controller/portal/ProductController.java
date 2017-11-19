@@ -4,6 +4,8 @@ import com.dmall.common.ServerResponse;
 import com.dmall.service.IProductService;
 import com.dmall.vo.ProductDetailVo;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+
+    private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     private IProductService iProductService;
@@ -37,6 +41,7 @@ public class ProductController {
                                          @RequestParam(value = "pageNum",defaultValue = "1")int pageNum,
                                          @RequestParam(value = "pageSize",defaultValue = "10")int pageSize,
                                          @RequestParam(value = "orderBy",defaultValue = "")String orderBy) {
+        logger.info("property = " + property + " type = " + type);
         return iProductService.getProductByFields(keyword, categoryId, property, type, discountLevel, pageNum, pageSize, orderBy);
     }
 }
