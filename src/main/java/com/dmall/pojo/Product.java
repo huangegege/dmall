@@ -38,7 +38,7 @@ public class Product {
 
     private Date updateTime;
 
-    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Integer goodProduct, Integer newProduct, Integer hotSale, BigDecimal discount, Date createTime, Date updateTime) {
+    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Integer goodProduct, Integer newProduct, Integer hotSale, BigDecimal discount, String type, Date createTime, Date updateTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -53,6 +53,7 @@ public class Product {
         this.newProduct = newProduct;
         this.hotSale = hotSale;
         this.discount = discount;
+        this.type = type;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
